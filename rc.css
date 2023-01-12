@@ -20,6 +20,17 @@
     --font-nav: 'Fira Sans Condensed', sans-serif;
 }
 
+.hidden{
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: translateX(-100%);
+}
+
+.show-element{
+    opacity: 1;
+    transform: translateX(0);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -58,7 +69,11 @@ body{
     height: 60px;
     box-shadow: 2px 1px 10px var(--nav-color);
     transition: all 0.4s ease;
-    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    /* position: relative; */
 }
 
 .title .span-name{
@@ -82,39 +97,8 @@ body{
     cursor: pointer;
 }
 
-.inside-container .hamburger-menu{
-    display: none;
-    width: 100%;
-    height: auto;
-    font-family: var(--font-nav);
-    background-color: var(--text-color-light);
-    position: absolute;
-    top: 60px;
-    z-index: 1;
-    transform-origin: top;
-}
-
 .hamburger-menu .nav-ul{
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s cubic-bezier(1, 0.41, 0, 1.46);
-}
-
-.hamburger-menu .nav-ul .nav-li{
-    list-style: none;
-    width: 100%;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    transition: all 0.4s ease;
-}
-
-.hamburger-menu .nav-ul .nav-li:hover{
-    background-color: var(--nav-color);
-    color: var(--body-color);
+    display: none;
 }
 /* End of Hamburger menu */
 
@@ -125,7 +109,7 @@ body{
     position: relative;
 }
 
-.nav-ul .nav-li:not(:last-child):after{
+.nav-ul .nav-li:after{
     content: '';
     position: absolute;
     width: 5px;
@@ -137,7 +121,7 @@ body{
     transition: all 0.4s ease;
 }
 
-.nav-ul .nav-li:not(:last-child):hover:after{
+.nav-ul .nav-li:hover::after{
     background-color: var(--body-color);
     width: 100%;
 }
@@ -168,6 +152,10 @@ body{
     background-color: var(--border-color);
     border: 1px solid var(--body-color);
     color: var(--body-color);
+}
+
+.main-btn a{
+    color: unset;
 }
 
 /* Main Body */
@@ -207,19 +195,21 @@ body{
 /* Center Container 2 */
 .center-container2{
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
     margin: 20px 55px;
-    height: 100vh;
+    height: 80vh;
     gap: 10px;
 }
 
 .center-container2 .about1{
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: var(--nav-color);
+    /* background-color: var(--nav-color); */
     font-family: var(--font-nav);
     text-align: justify;
     gap: 20px;
@@ -227,8 +217,8 @@ body{
     border-radius: 5px;
 }
 
-.center-container2 .about1:hover{
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.534);
+.about1 .main-intro{
+    line-height: 25px;
 }
 
 .center-container2 h2{
@@ -236,43 +226,38 @@ body{
 }
 
 .center-container2 .about2{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: var(--text-color-light);
-    border-radius: 5px;
-}
-
-.about2 ul{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-nav);
-    transition: all 0.4s ease;
+    height: 80vh;
     position: relative;
-    overflow: hidden;
 }
 
-.about2 span{
-    margin: 10px 0;
-    font-size: 1.3rem;
+.about-holder{
+    display: flex;
+    gap: 40px;
     position: absolute;
-    top: 30%;
-    border-bottom: 1px solid var(--text-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.about2 ul:hover{
-    box-shadow: 1px 1px 10px var(--border-color);
+.about-holder .about{
+    height: 100%;
 }
 
-.about2 ul li{
+.about-holder .about span{
+    font-family: var(--font-nav);
+    font-size: 2rem;
+}
+
+.about-holder .about li{
     list-style: none;
-    font-size: 1;
-    margin: 3px 0;
+    margin: 10px 0;
+    font-family: var(--font-normal);
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
 .center-container3{
-    height: auto;
+    height: 100vh;
     margin: 40px 55px 0 55px;
     display: flex;
     flex-direction: column;
@@ -312,9 +297,17 @@ body{
     cursor: pointer;
 }
 
+.project-details a{
+    color: unset;
+}
+
 .center-container3 .fa-arrow-down{
     cursor: pointer;
 }
+
+/* TODO: ADD RESUME
+    PAG SCROLL DI REKTA SA DIV
+*/
 
 /* Left Panel */
 .left-panel{
@@ -350,45 +343,30 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 100vh;
     margin-bottom: 20px;
     font-family: var(--font-nav);
 }
 
-.contact-me .main-span{
-    display: flex;
-    margin: 40px;
+.contact-me .btn-holder{
+    margin: 20px 0;
 }
 
-.main-span span{
-    margin: 10px 20px;
-}
-
-.contact-me label{
-    display: block;
-}
-
-.main-span span input{
-    padding: 10px 40px 10px 0;
-    width: 100%;
-    border: none;
+.contact-me .btn-holder .contact-btn{
+    padding: 15px 40px;
     background-color: transparent;
-    border-bottom: 1px solid black;
+    border: 1px solid var(--body-color);
+    color: var(--body-color);
+    cursor: pointer;
+    transition: all 0.4s ease;
 }
 
-.main-span span input:focus{
-    outline: none;
-}
-
-.contact-me #text-area{
-    width: 66%;
-    height: 100px;
-    margin-bottom: 30px;
-    padding: 20px;
+.contact-me .btn-holder .contact-btn:hover{
+    background-color: var(--nav-color);
 }
 
 .main-body-desc{
-    font-size: 1.8rem;
+    font-size: 3rem;
 }
 
 /* Footer */
@@ -396,6 +374,12 @@ body{
     text-align: center;
     font-family: var(--font-nav);
     padding: 20px 10px;
+}
+
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
 }
 
 /* 769px — 1024px: Small screens, laptops. */
@@ -455,6 +439,41 @@ body{
     .inside-container .hamburger-menu.active{
         display: block;
     }
+
+    .inside-container .hamburger-menu{
+        display: none;
+        width: 100%;
+        height: auto;
+        font-family: var(--font-nav);
+        background-color: var(--text-color-light);
+        position: fixed;
+        top: 60px;
+        z-index: 1;
+        transform-origin: top;
+    }
+    
+    .hamburger-menu .nav-ul{
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(1, 0.41, 0, 1.46);
+    }
+    
+    .hamburger-menu .nav-ul .nav-li{
+        list-style: none;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        transition: all 0.4s ease;
+    }
+    
+    .hamburger-menu .nav-ul .nav-li:hover{
+        background-color: var(--nav-color);
+        color: var(--body-color);
+    }
 }
 
 /* 481px — 768px: iPads, Tablets. */
@@ -473,10 +492,6 @@ body{
         margin-bottom: 20px;
     }
 
-    .center-container1 .main-intro{
-        font-size: 1.2rem;
-    }
-
     .contact-me{
         height: auto;
     }
@@ -485,12 +500,39 @@ body{
         text-align: center;
     }
 
+    .main-body-desc{
+        font-size: 1.8rem;
+    }
+
 }
 
 @media screen and (max-width:593px){
     .center-container3 .project-wrapper{
         grid-template-columns: repeat(2, 200px);
     }
+
+    .center-container2{
+        height: auto;
+        margin: 20px 10px;
+    }
+
+    .about2 .about-holder{
+        position: unset;
+        transform: unset;
+        height: auto;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .center-container2 .about2{
+        height: auto;
+        padding: 10px;
+    }
+
+    .center-container2 .about1{
+        height: auto;
+    }
+    
 }
 
 /* 320px — 480px: Mobile devices. */
@@ -512,19 +554,12 @@ body{
         font-size: 0.8rem;
     }
 
-    .center-container2{
-        height: auto;
-        margin: 20px 10px;
-    }
-
-    .center-container2 .about1{
-        height: 50vh;
-        padding: 10px;
-    }
-
-    .center-container2 .about2 ul span, .center-container2 .about2 ul li{
+    .center-container2 .about2 ul li{
         font-size: 1rem;
-        text-align: center;
+    }
+
+    .center-container2 .about2 ul span{
+        font-size: 1.5rem;
     }
 
     .center-container1 .container1-holder{
@@ -539,7 +574,4 @@ body{
         right: 10px;
     }
 
-    /* .center-container3 .fa-arrow-down{
-        display: block;
-    } */
 }

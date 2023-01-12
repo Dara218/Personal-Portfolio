@@ -9,6 +9,9 @@ $(document).ready(function(){
     const centerContainer1 = $('.center-container1').offset().top
     const centerContainer2 = $('.center-container2').offset().top
     const centerContainer3 = $('.center-container3').offset().top
+    const mainNavEl = $('.main-nav')
+    
+    let lastScroll = scrollY
 
     $(this).on('scroll', function(){
 
@@ -17,6 +20,21 @@ $(document).ready(function(){
         const leftPanel = $('.left-panel ul a')
         const rightPanel = $('.right-panel a')
         const aLink = $('.center-container3 p a')
+        let currentScroll = scrollY
+
+        if(lastScroll > currentScroll){
+            mainNavEl.css({
+                top: '0'
+            })
+        }
+
+        else{
+            mainNavEl.css({
+                top: '-100px'
+            })
+        }
+
+        lastScroll = currentScroll
 
         if(scrollY >= centerContainer1){
             leftPanel.hide()
@@ -55,32 +73,42 @@ $(document).ready(function(){
     [
         {
             id: 1,
-            name: 'Project Name1',
-            photo: 'https://picsum.photos/350/200/?random=1',
+            name: 'Basic Dept Clone',
+            photo: 'https://serving.photos.photobox.com/15258501aaf77618d881ba6ca0323f984181eacbfe5274c4f132d4438b63298bae882f7a.jpg',
+            githubLink: 'https://github.com/Dara218/Basic-Dept-clone',
+            link: 'https://dara218.github.io/Basic-Dept-clone/index.html',
         },
 
         {
             id: 2,
-            name: 'Project Name2',
-            photo: 'https://picsum.photos/350/200/?random=2',
+            name: 'Monstercat Clone',
+            photo: 'https://serving.photos.photobox.com/86788010c591b73fd3ba968648d25f185753f5d078fd32dfa36c53ae0917c3aa930364be.jpg',
+            githubLink: 'https://github.com/Dara218/Level-Days-clone',
+            link: 'https://dara218.github.io/Level-Days-clone/',
         },
 
         {
             id: 3,
-            name: 'Project Name3',
-            photo: 'https://picsum.photos/350/200/?random=3',
+            name: 'Bonsai - Pricing Clone',
+            photo: 'https://serving.photos.photobox.com/746410247ec2fba1cddd3ce88dfc6ef6645a0dfbecc5138d068336d6e1c4fc75fd193d12.jpg',
+            githubLink: 'https://github.com/Dara218/Bonsai-Clone',
+            link: 'https://dara218.github.io/Bonsai-Clone/',
         },
 
         {
             id: 4,
-            name: 'Project Name4',
+            name: 'Soon',
             photo: 'https://picsum.photos/350/200/?random=4',
+            githubLink: '',
+            link: '',
         },
 
         {
             id: 5,
-            name: 'Project Name5',
+            name: 'Soon',
             photo: 'https://picsum.photos/350/200/?random=5',
+            githubLink: '',
+            link: '',
         }
     ]
     const projectWrapper = $('.project-wrapper')
@@ -91,17 +119,12 @@ $(document).ready(function(){
         <div class="project-details">
             <div class="project-title">${eachMap.name}</div>
             <span>
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <a href="${eachMap.githubLink}" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github"></i></a>
+            <a href="${eachMap.link}" target="_blank" rel="noreferrer noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </span>
         </div>
     </div>`
     })
-
-    function loadProjects(){       
-        projectsSlice1 = eachProductsMap.slice(0, 3)
-        projectWrapper.html(projectsSlice1)
-    }
 
     loadProjects()
 
@@ -119,13 +142,6 @@ $(document).ready(function(){
             $(this).slideDown()
         }
     })
-
-    function loadMore(currentProjectCount){
-        projectsSlice1 = eachProductsMap.slice(0, currentProjectCount)
-
-        projectWrapper.html(projectsSlice1)
-        console.log(currentProjectCount);
-    }
 
     const aboutBtn = $('#about')
     const projectsBtn = $('#projects')
@@ -159,4 +175,32 @@ $(document).ready(function(){
         window.scrollTo(0, $(document).height())
     })
 
+    const observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(eachEntry){
+            if(eachEntry.isIntersecting){
+                eachEntry.target.classList.add('show-element')
+            }
+            else{
+                eachEntry.target.classList.remove('show-element')
+            }
+        })
+    })
+
+    const allHidden = document.querySelectorAll('.hidden')
+
+    allHidden.forEach(function(el){
+        observer.observe(el)
+    })
+
+    function loadProjects(){       
+        projectsSlice1 = eachProductsMap.slice(0, 3)
+        projectWrapper.html(projectsSlice1)
+    }
+ 
+    function loadMore(currentProjectCount){
+        projectsSlice1 = eachProductsMap.slice(0, currentProjectCount)
+
+        projectWrapper.html(projectsSlice1)
+        console.log(currentProjectCount);
+    }
 })
