@@ -20,11 +20,16 @@ $(document).ready(function(){
         const leftPanel = $('.left-panel ul a')
         const rightPanel = $('.right-panel a')
         const aLink = $('.center-container3 p a')
+        const hamburgerMenu = $('.hamburger-menu')
         let currentScroll = scrollY
 
         if(lastScroll > currentScroll){
             mainNavEl.css({
                 top: '0'
+            })
+
+            hamburgerMenu.css({
+                top: '60px'
             })
         }
 
@@ -32,6 +37,11 @@ $(document).ready(function(){
             mainNavEl.css({
                 top: '-100px'
             })
+
+            hamburgerMenu.css({
+                top: '-200px'
+            })
+
         }
 
         lastScroll = currentScroll
