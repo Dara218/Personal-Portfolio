@@ -450,6 +450,7 @@ body{
         top: 60px;
         z-index: 1;
         transform-origin: top;
+        transition: all 0.4s cubic-bezier(1, 0.41, 0, 1.46);
     }
     
     .hamburger-menu .nav-ul{
