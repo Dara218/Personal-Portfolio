@@ -16,27 +16,16 @@ $(document).ready(function () {
     var leftPanel = $('.left-panel ul a');
     var rightPanel = $('.right-panel a');
     var aLink = $('.center-container3 p a');
-    var currentScroll = scrollY;
-
-    if (lastScroll > currentScroll) {
-      mainNavEl.css({
-        top: '0'
-      });
-    } else {
-      mainNavEl.css({
-        top: '-100px'
-      });
+    var hamburgerMenu = $('.hamburger-menu');
+    /*if(scrollY >= centerContainer1){
+        leftPanel.hide()
+        rightPanel.hide()
     }
-
-    lastScroll = currentScroll;
-
-    if (scrollY >= centerContainer1) {
-      leftPanel.hide();
-      rightPanel.hide();
-    } else {
-      leftPanel.show();
-      rightPanel.show();
-    }
+    
+    else{
+        leftPanel.show()
+        rightPanel.show()
+    }*/
 
     if (scrollY >= centerContainer3 - 50) {
       body.addClass('changeColor');
@@ -51,6 +40,26 @@ $(document).ready(function () {
       leftPanel.removeClass('changeColorText');
       rightPanel.removeClass('changeColorText');
     }
+
+    var currentScroll = scrollY;
+
+    if (lastScroll > currentScroll) {
+      mainNavEl.css({
+        top: '0'
+      });
+      hamburgerMenu.css({
+        top: '60px'
+      });
+    } else {
+      mainNavEl.css({
+        top: '-100px'
+      });
+      hamburgerMenu.css({
+        top: '-200px'
+      });
+    }
+
+    lastScroll = currentScroll;
   });
   var hamburgerBtn = $('.fa-bars');
   hamburgerBtn.on('click', function () {

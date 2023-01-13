@@ -22,7 +22,7 @@ $(document).ready(function(){
         const aLink = $('.center-container3 p a')
         const hamburgerMenu = $('.hamburger-menu')
 
-        if(scrollY >= centerContainer1){
+        /*if(scrollY >= centerContainer1){
             leftPanel.hide()
             rightPanel.hide()
         }
@@ -30,7 +30,7 @@ $(document).ready(function(){
         else{
             leftPanel.show()
             rightPanel.show()
-        }
+        }*/
 
         if(scrollY >= centerContainer3 - 50){
             body.addClass('changeColor')
@@ -39,6 +39,7 @@ $(document).ready(function(){
             leftPanel.show().addClass('changeColorText')
             rightPanel.show().addClass('changeColorText')
         }
+        
         else{
             body.removeClass('changeColor')
             input.removeClass('changeColorText')
