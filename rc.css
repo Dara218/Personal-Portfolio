@@ -79,8 +79,8 @@ body{
     width: 80%;
     height: 60px;
     box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
--webkit-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
--moz-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
+    -webkit-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
+    -moz-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
     transition: all 0.4s ease;
     position: fixed;
     left: 10%;
@@ -103,7 +103,7 @@ body{
 }
 
 .main-nav .nav-ul a{
-    color: var(--text-color);
+    color: var(--text-color-light);
 }
 
 .inside-container{
