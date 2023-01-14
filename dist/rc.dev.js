@@ -16,16 +16,23 @@ $(document).ready(function () {
     var leftPanel = $('.left-panel ul a');
     var rightPanel = $('.right-panel a');
     var aLink = $('.center-container3 p a');
-    var hamburgerMenu = $('.hamburger-menu');
-    /*if(scrollY >= centerContainer1){
-        leftPanel.hide()
-        rightPanel.hide()
-    }
-    
-    else{
-        leftPanel.show()
-        rightPanel.show()
-    }*/
+    var hamburgerMenu = $('.hamburger-menu'); // if(scrollY <= centerContainer1){
+    //     leftPanel.hide()
+    //     rightPanel.hide()
+    //     // mainNavEl.css({backgroundColor: 'var(--border-color)'})
+    // }
+    // else{
+    //     leftPanel.show()
+    //     rightPanel.show()
+    // }
+    // if(scrollY <= centerContainer2){
+    //     console.log('hello');
+    //     mainNavEl.css({backgroundColor: 'var(--border-color)'})
+    // }
+    // if(scrollY <= centerContainer3 && scrollY){
+    //     console.log('hello2');
+    //     mainNavEl.css({backgroundColor: 'var(--body-color)'})
+    // }
 
     if (scrollY >= centerContainer3 - 50) {
       body.addClass('changeColor');
@@ -33,12 +40,18 @@ $(document).ready(function () {
       aLink.addClass('changeColorTextLink');
       leftPanel.show().addClass('changeColorText');
       rightPanel.show().addClass('changeColorText');
+      mainNavEl.css({
+        backgroundColor: 'var(--text-color)'
+      });
     } else {
       body.removeClass('changeColor');
       input.removeClass('changeColorText');
       aLink.removeClass('changeColorTextLink');
       leftPanel.removeClass('changeColorText');
       rightPanel.removeClass('changeColorText');
+      mainNavEl.css({
+        backgroundColor: 'var(--body-color)'
+      });
     }
 
     var currentScroll = scrollY;
@@ -145,11 +158,21 @@ $(document).ready(function () {
       } else {
         eachEntry.target.classList.remove('show-element');
       }
+
+      if (eachEntry.isIntersecting) {
+        eachEntry.target.classList.add('show-icons');
+      } else {
+        eachEntry.target.classList.remove('show-icons');
+      }
     });
   });
   var allHidden = document.querySelectorAll('.hidden');
+  var allHiddenIcons = document.querySelectorAll('.show');
   allHidden.forEach(function (el) {
     observer.observe(el);
+  });
+  allHiddenIcons.forEach(function (el2) {
+    observer.observe(el2);
   });
 
   function loadProjects() {
@@ -160,6 +183,5 @@ $(document).ready(function () {
   function loadMore(currentProjectCount) {
     projectsSlice1 = eachProductsMap.slice(0, currentProjectCount);
     projectWrapper.html(projectsSlice1);
-    console.log(currentProjectCount);
   }
 });

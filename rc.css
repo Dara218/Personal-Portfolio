@@ -11,7 +11,7 @@
     --body-color: #F2FAF7;
     --nav-color: #93b7be;
     --text-color: black;
-    --text-color-light: #d5c7bc;
+    --text-color-light: #a89d95;
     --border-color: #785964;
     
     
@@ -22,12 +22,24 @@
 
 .hidden{
     opacity: 0;
-    transition: all 0.4s ease;
+    transition: all 1s ease;
     transform: translateX(-100%);
 }
 
 .show-element{
     opacity: 1;
+    transform: translateX(0);
+}
+
+.show{
+    opacity: 0;
+
+    transform: translateX(-100%);
+}
+
+.show-icons{
+    opacity: 1;
+    transition: all 1.9s ease;
     transform: translateX(0);
 }
 
@@ -37,7 +49,7 @@ html{
 
 a{
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-color-light);
 }
 
 body{
@@ -61,19 +73,22 @@ body{
 /* Main Nav */
 .main-nav{
     font-family: var(--font-nav);
-    background-color: var(--nav-color);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 60px;
-    box-shadow: 2px 1px 10px var(--nav-color);
+    box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
+-webkit-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
+-moz-box-shadow: 2px 33px 21px -23px rgba(147,183,190,0.74);
     transition: all 0.4s ease;
     position: fixed;
-    left: 0;
+    left: 10%;
     top: 0;
     z-index: 1;
     /* position: relative; */
+    border-bottom: 2px solid var(--nav-color);
+    background-color: var(--body-color);
 }
 
 .title .span-name{
@@ -107,6 +122,7 @@ body{
     width: 80px;
     z-index: 1;
     position: relative;
+    color: var(--body-color)
 }
 
 .nav-ul .nav-li:after{
@@ -114,7 +130,7 @@ body{
     position: absolute;
     width: 5px;
     height: 5px;
-    left: -15px;
+    left: 0;
     bottom: -8px;
     border-radius: 10px;
     z-index: -1;
@@ -123,7 +139,7 @@ body{
 
 .nav-ul .nav-li:hover::after{
     background-color: var(--body-color);
-    width: 100%;
+    width: 80%;
 }
 
 .nav-li a{
@@ -138,7 +154,7 @@ body{
 .main-btn{
     background-color: transparent;
     font-family: var(--font-nav);
-    color: var(--body-color);
+    color: var(--text-color-light);
     font-size: 1rem;
     border: 1px solid var(--border-color);
     border-radius: 5px;
@@ -165,10 +181,14 @@ body{
     cursor: pointer;
 }
 
+.main-body-h1{
+    color: var(--text-color);
+}
+
 /* Center Container 1*/
 .center-container1{
     min-height: 100vh;
-    background-color: var(--border-color);
+    background-color: var(--body-color);
     font-family: var(--font-nav);
     position: relative;
 }
@@ -182,6 +202,7 @@ body{
 
 .center-container1 h1,.center-container1 h2{
     font-size: 4rem;
+
 }
 
 .center-container1 .main-intro{
@@ -189,7 +210,19 @@ body{
 }
 
 .center-container1 h2{
-    color: var(--body-color)
+    color: var(--text-color-light);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    
+}
+
+.center-container1 .links-container1 ul{
+    position: absolute;
+    top: 42%;
+    right: 15%;
+    display: flex;
+    gap: 50px;
+    font-size: 4rem;
 }
 
 /* Center Container 2 */
@@ -305,16 +338,12 @@ body{
     cursor: pointer;
 }
 
-/* TODO: ADD RESUME
-    PAG SCROLL DI REKTA SA DIV
-*/
-
 /* Left Panel */
 .left-panel{
     position: fixed;
     left: 20px;
     bottom: 20px;
-    z-index: 1;
+    z-index: 0;
 }
 
 .left-panel .main-body-ul{
@@ -327,6 +356,7 @@ body{
     position: fixed;
     right: 20px;
     bottom: 10px;
+    z-index: -1;
 }
 
 .right-panel a{
@@ -363,10 +393,6 @@ body{
 
 .contact-me .btn-holder .contact-btn:hover{
     background-color: var(--nav-color);
-}
-
-.main-body-desc{
-    font-size: 3rem;
 }
 
 /* Footer */
@@ -442,15 +468,17 @@ body{
 
     .inside-container .hamburger-menu{
         display: none;
-        width: 100%;
+        width: 80%;
         height: auto;
         font-family: var(--font-nav);
         background-color: var(--text-color-light);
         position: fixed;
         top: 60px;
+        left: 10%;
         z-index: 1;
         transform-origin: top;
         transition: all 0.4s cubic-bezier(1, 0.41, 0, 1.46);
+        border-radius: 0 0 20px 20px;
     }
     
     .hamburger-menu .nav-ul{
@@ -475,6 +503,14 @@ body{
         background-color: var(--nav-color);
         color: var(--body-color);
     }
+
+    .center-container1 .links-container1 ul{
+        top: unset;
+        bottom: 20%;
+        right:unset;
+        left: 10%;
+        font-size: 3rem;
+    }
 }
 
 /* 481px — 768px: iPads, Tablets. */
@@ -484,13 +520,17 @@ body{
     }
 
     .center-container1 .container1-holder{
-        top: 20%;
-        padding: 40px;
+        padding: 20px;
     }
 
-    .center-container1 h1,.center-container1 h2{
+    .center-container1 h1{
         font-size: 3rem;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+    }
+
+    .center-container1 h2{
+        font-size: 2rem;
+         margin-bottom: 10px;
     }
 
     .contact-me{
@@ -502,7 +542,7 @@ body{
     }
 
     .main-body-desc{
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
 }
@@ -563,8 +603,10 @@ body{
         font-size: 1.5rem;
     }
 
+    
     .center-container1 .container1-holder{
-        top: 10%;
+        top: 21%;
+        left: 0;
     }
 
     .left-panel{

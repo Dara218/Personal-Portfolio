@@ -22,15 +22,27 @@ $(document).ready(function(){
         const aLink = $('.center-container3 p a')
         const hamburgerMenu = $('.hamburger-menu')
 
-        /*if(scrollY >= centerContainer1){
-            leftPanel.hide()
-            rightPanel.hide()
-        }
+        // if(scrollY <= centerContainer1){
+        //     leftPanel.hide()
+        //     rightPanel.hide()
+        //     // mainNavEl.css({backgroundColor: 'var(--border-color)'})
+        // }
         
-        else{
-            leftPanel.show()
-            rightPanel.show()
-        }*/
+        // else{
+        //     leftPanel.show()
+        //     rightPanel.show()
+        // }
+
+        // if(scrollY <= centerContainer2){
+        //     console.log('hello');
+        //     mainNavEl.css({backgroundColor: 'var(--border-color)'})
+        // }
+
+        // if(scrollY <= centerContainer3 && scrollY){
+        //     console.log('hello2');
+        //     mainNavEl.css({backgroundColor: 'var(--body-color)'})
+        // }
+        
 
         if(scrollY >= centerContainer3 - 50){
             body.addClass('changeColor')
@@ -38,6 +50,7 @@ $(document).ready(function(){
             aLink.addClass('changeColorTextLink')
             leftPanel.show().addClass('changeColorText')
             rightPanel.show().addClass('changeColorText')
+            mainNavEl.css({backgroundColor: 'var(--text-color)'})
         }
         
         else{
@@ -46,6 +59,7 @@ $(document).ready(function(){
             aLink.removeClass('changeColorTextLink')
             leftPanel.removeClass('changeColorText')
             rightPanel.removeClass('changeColorText')
+            mainNavEl.css({backgroundColor: 'var(--body-color)'})
         }
 
         let currentScroll = scrollY
@@ -195,13 +209,25 @@ $(document).ready(function(){
             else{
                 eachEntry.target.classList.remove('show-element')
             }
+
+            if(eachEntry.isIntersecting){
+                eachEntry.target.classList.add('show-icons')
+            }
+            else{
+                eachEntry.target.classList.remove('show-icons')
+            }
         })
     })
 
     const allHidden = document.querySelectorAll('.hidden')
+    const allHiddenIcons = document.querySelectorAll('.show')
 
     allHidden.forEach(function(el){
         observer.observe(el)
+    })
+
+    allHiddenIcons.forEach(function(el2){
+        observer.observe(el2)
     })
 
     function loadProjects(){       
@@ -213,6 +239,5 @@ $(document).ready(function(){
         projectsSlice1 = eachProductsMap.slice(0, currentProjectCount)
 
         projectWrapper.html(projectsSlice1)
-        console.log(currentProjectCount);
     }
 })
