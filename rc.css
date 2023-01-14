@@ -195,6 +195,7 @@ body{
     background-color: var(--body-color);
     font-family: var(--font-nav);
     position: relative;
+    z-index: 2;
 }
 
 .center-container1 .container1-holder{
@@ -347,7 +348,7 @@ body{
     position: fixed;
     left: 20px;
     bottom: 20px;
-    z-index: 0;
+    z-index: 1;
 }
 
 .left-panel .main-body-ul{
@@ -360,7 +361,7 @@ body{
     position: fixed;
     right: 20px;
     bottom: 10px;
-    z-index: -1;
+    z-index: 1;
 }
 
 .right-panel a{
