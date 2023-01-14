@@ -99,7 +99,11 @@ body{
 .main-nav .nav-ul{
     display: flex;
     list-style: none;
-    align-items: center;
+    align-items: center; 
+}
+
+.main-nav .nav-ul a{
+    color: var(--text-color);
 }
 
 .inside-container{
